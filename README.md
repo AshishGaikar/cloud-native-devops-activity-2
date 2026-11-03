@@ -251,6 +251,6 @@ This project provides practical experience with CI/CD automation, Docker, GitHub
 ### 11. Repository
 
 **GitHub Repository:**  
-https://github.com/YOUR-GITHUB-USERNAME/cloud-native-devops-activity-2
+https://github.com/AshishGaikar/cloud-native-devops-activity-2
 
 Replace `YOUR-GITHUB-USERNAME` with your actual GitHub username.
