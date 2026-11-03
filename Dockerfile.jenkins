@@ -3,8 +3,25 @@ FROM jenkins/jenkins:lts-jdk21
 USER root
 
 RUN apt-get update && \
-    apt-get install -y python3 python3-pip python3-venv git && \
+    apt-get install -y \
+    python3 \
+    python3-pip \
+    python3-venv \
+    git \
+    curl \
+    ca-certificates \
+    docker.io && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
+
+# Install kubectl
+RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" && \
+    install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl && \
+    rm kubectl
+
+# Install KIND
+RUN curl -Lo /usr/local/bin/kind \
+    https://kind.sigs.k8s.io/dl/v0.30.0/kind-linux-amd64 && \
+    chmod +x /usr/local/bin/kind
 
 USER jenkins
